@@ -43,3 +43,12 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
     
+    - name: Build, tag, and push image to Amazon ECR
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: bmw
+        IMAGE_TAG: spring-boot-tag
+      run: |
+        docker build -t bmw .
+        docker tag bmw:latest public.ecr.aws/o8o1r3k9/bmw:latest
+        docker push public.ecr.aws/o8o1r3k9/bmw:latest
