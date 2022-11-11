@@ -49,6 +49,6 @@ jobs:
         ECR_REPOSITORY: bmw
         IMAGE_TAG: spring-boot-tag
       run: |
-        docker build -t bmw .
+        docker build -f ../../Dockerfile -t bmw .
         docker tag bmw:latest public.ecr.aws/o8o1r3k9/bmw:latest
         docker push public.ecr.aws/o8o1r3k9/bmw:latest
