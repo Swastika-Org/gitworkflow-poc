@@ -47,8 +47,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: bmw
-        IMAGE_TAG: spring-boot-tag
+        IMAGE_TAG: spring_demo_image
       run: |
-        docker build -t bmw .
-        docker tag bmw:latest public.ecr.aws/o8o1r3k9/bmw:latest
-        docker push public.ecr.aws/o8o1r3k9/bmw:latest
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
