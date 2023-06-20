@@ -30,7 +30,10 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
+  deploy:
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:  
     # Setup the AWS credentials  
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
